@@ -22,7 +22,8 @@ var _require = require('../JoiSchemas'),
 var flash = require('connect-flash');
 
 var _require2 = require('../middleware'),
-    isLoggedin = _require2.isLoggedin;
+    isLoggedin = _require2.isLoggedin,
+    storeReturnTo = _require2.storeReturnTo;
 
 var mongoose = require('mongoose');
 
@@ -70,7 +71,7 @@ router.get('/new', isLoggedin, function (req, res) {
   // }
   res.render('campgrounds/new');
 });
-router.post('/', validateCampground, catchAsync(function _callee2(req, res, next) {
+router.post('/', isLoggedin, validateCampground, catchAsync(function _callee2(req, res, next) {
   var campground;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
@@ -126,7 +127,7 @@ router.get('/:id', catchAsync(function _callee3(req, res) {
     }
   });
 }));
-router.get('/:id/edit', catchAsync(function _callee4(req, res, next) {
+router.get('/:id/edit', isLoggedin, catchAsync(function _callee4(req, res, next) {
   var campground;
   return regeneratorRuntime.async(function _callee4$(_context4) {
     while (1) {
@@ -158,7 +159,7 @@ router.get('/:id/edit', catchAsync(function _callee4(req, res, next) {
     }
   });
 }));
-router.put('/:id', validateCampground, catchAsync(function _callee5(req, res, next) {
+router.put('/:id', isLoggedin, validateCampground, catchAsync(function _callee5(req, res, next) {
   var id, campground;
   return regeneratorRuntime.async(function _callee5$(_context5) {
     while (1) {
@@ -181,7 +182,7 @@ router.put('/:id', validateCampground, catchAsync(function _callee5(req, res, ne
     }
   });
 }));
-router["delete"]('/:id', catchAsync(function _callee6(req, res, next) {
+router["delete"]('/:id', isLoggedin, catchAsync(function _callee6(req, res, next) {
   var id;
   return regeneratorRuntime.async(function _callee6$(_context6) {
     while (1) {

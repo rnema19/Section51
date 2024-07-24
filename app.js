@@ -13,8 +13,8 @@ const cookieparser = require('cookie-parser')
 
 
 const userRoutes = require('./routes/users')
-const campgrounds = require('./routes/campgrounds')
-const reviews = require('./routes/reviews')
+const campgroundRoutes = require('./routes/campgrounds')
+const reviewsRoutes = require('./routes/reviews')
 // const cookie = require('express-session/session/cookie')
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp').
@@ -89,8 +89,8 @@ app.get('/fakeUser',async(req,res)=>{
 })
 
 app.use('/',userRoutes)
-app.use('/campgrounds',campgrounds)
-app.use('/campgrounds/:id/reviews',reviews)
+app.use('/campgrounds',campgroundRoutes)
+app.use('/campgrounds/:id/reviews',reviewsRoutes)
 
 app.get('/',(req,res)=>{
     res.render('home')

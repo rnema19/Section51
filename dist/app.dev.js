@@ -26,9 +26,9 @@ var cookieparser = require('cookie-parser');
 
 var userRoutes = require('./routes/users');
 
-var campgrounds = require('./routes/campgrounds');
+var campgroundRoutes = require('./routes/campgrounds');
 
-var reviews = require('./routes/reviews'); // const cookie = require('express-session/session/cookie')
+var reviewsRoutes = require('./routes/reviews'); // const cookie = require('express-session/session/cookie')
 
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp').then(function () {
@@ -110,8 +110,8 @@ app.get('/fakeUser', function _callee(req, res) {
   });
 });
 app.use('/', userRoutes);
-app.use('/campgrounds', campgrounds);
-app.use('/campgrounds/:id/reviews', reviews);
+app.use('/campgrounds', campgroundRoutes);
+app.use('/campgrounds/:id/reviews', reviewsRoutes);
 app.get('/', function (req, res) {
   res.render('home');
 });
