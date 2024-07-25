@@ -60,7 +60,7 @@ app.use(session({
     name : 'test',
     secret : 'bettersecret',
     resave : false,
-    saveUnitialized : false,
+    saveUninitialized : false,
     cookie : {
         httpOnly : true,
         expires : Date.now()+1000*60*60*24*7,
@@ -77,8 +77,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
-    res.locals.success = req.flash("Success!")
-    res.locals.error = req.flash('Error')
+    res.locals.success = req.flash("success")
+    res.locals.error = req.flash('error')
     next()
 })
 
@@ -110,6 +110,6 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render('error',{err})
 })
 
-app.listen(3000,()=>{
-    console.log("Serving port 3000!!!")
+app.listen(3500,()=>{
+    console.log("Serving port 3500!!!")
 })

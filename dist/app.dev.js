@@ -67,7 +67,7 @@ app.use(session({
   name: 'test',
   secret: 'bettersecret',
   resave: false,
-  saveUnitialized: false,
+  saveUninitialized: false,
   cookie: {
     httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
@@ -81,8 +81,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function (req, res, next) {
-  res.locals.success = req.flash("Success!");
-  res.locals.error = req.flash('Error');
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash('error');
   next();
 });
 app.get('/fakeUser', function _callee(req, res) {
@@ -133,6 +133,6 @@ app.use(function (err, req, res, next) {
     err: err
   });
 });
-app.listen(3000, function () {
-  console.log("Serving port 3000!!!");
+app.listen(3500, function () {
+  console.log("Serving port 3500!!!");
 });

@@ -22,7 +22,7 @@ var _require = require('../JoiSchemas'),
 var flash = require('connect-flash');
 
 var _require2 = require('../middleware'),
-    isLoggedin = _require2.isLoggedin,
+    isLoggedIn = _require2.isLoggedIn,
     storeReturnTo = _require2.storeReturnTo;
 
 var mongoose = require('mongoose');
@@ -64,14 +64,14 @@ router.get('/', catchAsync(function _callee(req, res) {
     }
   });
 }));
-router.get('/new', isLoggedin, function (req, res) {
+router.get('/new', isLoggedIn, function (req, res) {
   // if (!req.isAuthenticated) {
   //     req.flash('error','you must be signed in!')
   //     res.redirect('/login')
   // }
   res.render('campgrounds/new');
 });
-router.post('/', isLoggedin, validateCampground, catchAsync(function _callee2(req, res, next) {
+router.post('/', isLoggedIn, validateCampground, catchAsync(function _callee2(req, res, next) {
   var campground;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
@@ -127,7 +127,7 @@ router.get('/:id', catchAsync(function _callee3(req, res) {
     }
   });
 }));
-router.get('/:id/edit', isLoggedin, catchAsync(function _callee4(req, res, next) {
+router.get('/:id/edit', isLoggedIn, catchAsync(function _callee4(req, res, next) {
   var campground;
   return regeneratorRuntime.async(function _callee4$(_context4) {
     while (1) {
@@ -159,7 +159,7 @@ router.get('/:id/edit', isLoggedin, catchAsync(function _callee4(req, res, next)
     }
   });
 }));
-router.put('/:id', isLoggedin, validateCampground, catchAsync(function _callee5(req, res, next) {
+router.put('/:id', isLoggedIn, validateCampground, catchAsync(function _callee5(req, res, next) {
   var id, campground;
   return regeneratorRuntime.async(function _callee5$(_context5) {
     while (1) {
@@ -182,7 +182,7 @@ router.put('/:id', isLoggedin, validateCampground, catchAsync(function _callee5(
     }
   });
 }));
-router["delete"]('/:id', isLoggedin, catchAsync(function _callee6(req, res, next) {
+router["delete"]('/:id', isLoggedIn, catchAsync(function _callee6(req, res, next) {
   var id;
   return regeneratorRuntime.async(function _callee6$(_context6) {
     while (1) {
